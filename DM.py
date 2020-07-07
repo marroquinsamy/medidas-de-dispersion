@@ -16,7 +16,7 @@ options = [
 selection = ""
 while selection != "#":
   print("\nBienvenido.")
-  print("\nMENÚ DE OPCIONES:")
+  print("MENÚ DE OPCIONES:")
   for index, value in enumerate(options):
     print(f"{index + 1}. {value}.")
   print(f"#. Salir")
@@ -64,7 +64,18 @@ while selection != "#":
     print(f"Desviación media: {desviacionMedia}.")
     print(f"Media aritmética: {mediaAritmetica}.")
     print(f"Número de datos: {dataNumber}.")
-    input()
+
+    answer = ""
+    answer = input(f"¿Deseas ver el procedimiento (s/n)? ").lower()
+    if answer == "s":
+      print(f"_\nx = (Σx) / N")
+      print(f"_\nx = (", end="")
+      for index, value in enumerate(data):
+        if index == len(data) - 1:
+          print(f"{value}) ", end=f"/ {dataNumber}\n")
+        else:
+          print(f"{value} + ", end="")
+      print(f"_\nx = {mediaAritmetica}")
 else:
   print(f"\nGracias por usar mi programa :D, vuelve pronto.\nDesarrollado y escrito por Samuel Marroquín G.")
   input("Presiona Enter para salir.")
