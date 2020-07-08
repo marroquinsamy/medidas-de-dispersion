@@ -15,7 +15,7 @@ options = [
 
 selection = ""
 while selection != "#":
-  print("\nBienvenido.")
+  print("Bienvenido.")
   print("MENÚ DE OPCIONES:")
   for index, value in enumerate(options):
     print(f"{index + 1}. {value}.")
@@ -40,22 +40,19 @@ while selection != "#":
     print(f"\nINSTRUCCIONES DE USO:\nIngresa todos los datos separados por UN espacio, para finalizar presiona Enter.")
     preData = input("Datos: ")
     preData = preData.split(" ")
+    
     # Validación de datos
     dataNumber = 0
-    for dataNumber, value in enumerate(preData):
+    for value in preData:
       data.append(validarDatos(value, dataNumber))
-    dataNumber += 1
-    
+    dataNumber = len(data)
+
     # Cálculo de la media aritmética
-    for index, value in enumerate(data):
-      if value != "":
-        mediaAritmetica += value
-      else:
-        break
-    mediaAritmetica = mediaAritmetica / (index + 1)
+    mediaAritmetica = sum(data)
+    mediaAritmetica = mediaAritmetica / dataNumber
     
     # Cálculo de la desviación mediaAritmetica
-    for index, value in enumerate(data):
+    for value in data:
       desviacionMedia += abs(value - mediaAritmetica)
     desviacionMedia = desviacionMedia / dataNumber
 
@@ -68,7 +65,7 @@ while selection != "#":
     answer = ""
     answer = input(f"¿Deseas ver el procedimiento (s/n)? ").lower()
     if answer == "s":
-      print(f"_\nx = (Σx) / N")
+      print(f"_\nx = Σx / N")
       print(f"_\nx = (", end="")
       for index, value in enumerate(data):
         if index == len(data) - 1:
@@ -76,6 +73,17 @@ while selection != "#":
         else:
           print(f"{value} + ", end="")
       print(f"_\nx = {mediaAritmetica}")
+
+      print(f"          _\nDM = |x - x| / N")
+      print(f"DM = (", end="")
+      for index, value in enumerate(data):
+        if index == len(data) - 1:
+          print(f"|{value} - {mediaAritmetica}|) ", end=f"/ {dataNumber}\n")
+        else:
+          print(f"|{value} - {mediaAritmetica}| + ", end="")
+      print(f"DM = {desviacionMedia}")
+    print()
+
 else:
   print(f"\nGracias por usar mi programa :D, vuelve pronto.\nDesarrollado y escrito por Samuel Marroquín G.")
   input("Presiona Enter para salir.")
